@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des utilisateurs</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Liste des utilisateurs</h1>
+    
+    <a href="/formulaire" class="btn">Nouvel utilisateur</a>
+
+    <% if(message === 'creation') { %>
+        <p class="success">Utilisateur créé avec succès !</p>
+    <% } %>
+    
+    <!-- Tableau -->
+    <% if (users.length === 0) { %>
+      <div class="empty">
+        <p>Aucun utilisateur enregistré.</p>
+        <a href="/users/new" class="btn">Créer le premier utilisateur</a>
+      </div>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.nom %></td>
+              <td><%= user.prenom %></td>
+              <td><%= user.email %></td>
+              <td><%= user.telephone || '-' %></td>
+              <td class="actions">
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <p class="total">Total : <%=users.length %> utilisateur(s)</p>
+    <% } %>
+  </div>
+</body>
+</html>
