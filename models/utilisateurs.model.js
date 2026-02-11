@@ -21,6 +21,10 @@ const Utilisateur = db.define('Utilisateur', {
         allowNull: false,
         unique: true
     },
+    mot_de_passe: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     telephone: {
         type: DataTypes.STRING
     }
